@@ -18,33 +18,12 @@ function createDreamTeam(members) {
     let secretName = "";
     for (const member of members) {
         if (typeof member === "string") {
-            const firstWord = member.trim().split(" ")[0];
-            console.log(firstWord);
-            if (firstWord) {
-                const letter = firstWord[0].toUpperCase();
-                secretName += letter;
-            }
+            secretName += member.trim()[0].toUpperCase();
         }
     }
 
     return [...secretName].sort().join("");
 }
-
-console.log(
-    createDreamTeam([
-        ["David Abram"],
-        ["Robin Attfield"],
-        "Thomas Berry",
-        ["Paul R.Ehrlich"],
-        "donna Haraway",
-        " BrIaN_gOodWiN  ",
-        {
-            0: "Serenella Iovino",
-        },
-        "Erazim Kohak",
-        "  val_plumwood",
-    ])
-);
 
 module.exports = {
     createDreamTeam,
