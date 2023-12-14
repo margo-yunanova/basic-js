@@ -22,13 +22,13 @@ const chainMaker = {
         return this;
     },
     reverseChain() {
-        this.chain = this.chain.reverse();
+        this.chain.reverse();
         return this;
     },
     finishChain() {
-        const newChain = this.chain.join("~~");
+        const result = this.chain.join("~~");
         this.chain.length = 0;
-        return newChain;
+        return result;
     },
 };
 
