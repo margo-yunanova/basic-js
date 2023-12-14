@@ -13,16 +13,25 @@
  * createDreamTeam(['Olivia', 1111, 'Lily', 'Oscar', true, null]) => 'LOO'
  *
  */
+// function createDreamTeam(members) {
+//     if (!Array.isArray(members)) return false;
+//     let secretName = "";
+//     for (const member of members) {
+//         if (typeof member === "string") {
+//             secretName += member.trim()[0].toUpperCase();
+//         }
+//     }
+
+//     return [...secretName].sort().join("");
+// }
+
 function createDreamTeam(members) {
     if (!Array.isArray(members)) return false;
-    let secretName = "";
-    for (const member of members) {
-        if (typeof member === "string") {
-            secretName += member.trim()[0].toUpperCase();
-        }
-    }
-
-    return [...secretName].sort().join("");
+    return members
+        .filter((member) => typeof member === "string")
+        .map((member) => member.trim()[0].toUpperCase())
+        .sort()
+        .join("");
 }
 
 module.exports = {
