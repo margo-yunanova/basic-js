@@ -17,18 +17,18 @@ const { NotImplementedError } = require("../extensions/index.js");
  */
 
 function repeater(str, options) {
-    let addition = options.addition === undefined ? "" : `${options.addition}`;
-    if (options.additionRepeatTimes) {
-        addition = Array(options.additionRepeatTimes)
-            .fill(addition)
-            .join(options.additionSeparator ?? "|");
-    }
-    let string = str + addition;
-    if (options.repeatTimes) {
-        string = Array(options.repeatTimes)
-            .fill(string)
-            .join(options.separator ?? "+");
-    }
+    const {
+        addition,
+        additionRepeatTimes = 1,
+        additionSeparator = "|",
+        repeatTimes = 1,
+        separator = "+",
+    } = options;
+
+    let string = addition === undefined ? "" : `${addition}`;
+    string = str + Array(additionRepeatTimes).fill(string).join(additionSeparator);
+    string = Array(repeatTimes).fill(string).join(separator);
+
     return string;
 }
 
