@@ -14,18 +14,26 @@ const { NotImplementedError } = require("../extensions/index.js");
  */
 function getSumOfDigits(n) {
     let num = n;
-    let sum = 0;
-
-    while (num !== 0) {
-        sum += num % 10;
-        num = Math.trunc(num / 10);
+    while (num > 9) {
+        let sum = 0;
+        while (num !== 0) {
+            sum += num % 10;
+            num = Math.trunc(num / 10);
+        }
+        num = sum;
     }
-
-    if (Math.trunc(sum / 10)) {
-        sum = getSumOfDigits(sum);
-    }
-    return sum;
+    return num;
 }
+
+// function getSumOfDigits(n) {
+//   let sum = n;
+
+//   while (sum > 9) {
+//       sum = (sum % 10) + Math.trunc(sum / 10);
+//   }
+
+//   return sum;
+// }
 
 module.exports = {
     getSumOfDigits,
